@@ -34,12 +34,12 @@ public class AddressService {
    */
   @Transactional(propagation = Propagation.REQUIRED)
   public AddressEntity saveAddress(AddressEntity addressEntity, StateEntity stateEntity)
-      throws SaveAddressException, AddressNotFoundException {
+          throws SaveAddressException, AddressNotFoundException {
     //    Block to check for empty values in fields
     if (addressEntity.getFlatBuilNumber() != null
-        || addressEntity.getLocality() == null
-        || addressEntity.getCity() == null
-        || addressEntity.getPinCode() == null) {
+            || addressEntity.getLocality() == null
+            || addressEntity.getCity() == null
+            || addressEntity.getPinCode() == null) {
       throw new SaveAddressException("SAR-001", "No field can be empty");
     }
 
@@ -81,7 +81,7 @@ public class AddressService {
    */
   @Transactional(propagation = Propagation.REQUIRED)
   public CustomerAddressEntity saveCustomerAddressEntity(
-      AddressEntity addressEntity, CustomerEntity customerEntity) {
+          AddressEntity addressEntity, CustomerEntity customerEntity) {
     CustomerAddressEntity customerAddressEntity = new CustomerAddressEntity();
     customerAddressEntity.setAddress(addressEntity);
     customerAddressEntity.setCustomer(customerEntity);
