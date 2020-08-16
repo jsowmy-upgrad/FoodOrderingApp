@@ -1,14 +1,25 @@
 package com.upgrad.FoodOrderingApp.service.entity;
+<<<<<<< HEAD
 
+=======
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+>>>>>>> initial
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+<<<<<<< HEAD
+=======
+import javax.validation.constraints.Size;
+>>>>>>> initial
 import java.io.Serializable;
 
 @Entity
 @Table(name = "order_item")
+<<<<<<< HEAD
 public class OrderItemEntity implements Serializable {
 
     @Id
@@ -27,6 +38,29 @@ public class OrderItemEntity implements Serializable {
     @JoinColumn(name = "item_id")
     @NotNull
     private ItemEntity itemId;
+=======
+@NamedQueries(
+        {
+                @NamedQuery(name = "getItemsByOrder", query = "select oi from OrderItemEntity oi where oi.orders.id=:id")
+        })
+public class OrderItemEntity {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "item_id")
+    private ItemEntity item;
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "order_id")
+    private OrdersEntity orders;
+>>>>>>> initial
 
     @Column(name = "quantity")
     @NotNull
@@ -36,9 +70,12 @@ public class OrderItemEntity implements Serializable {
     @NotNull
     private Integer price;
 
+<<<<<<< HEAD
     public OrderItemEntity() {
     }
 
+=======
+>>>>>>> initial
     public Integer getId() {
         return id;
     }
@@ -47,6 +84,7 @@ public class OrderItemEntity implements Serializable {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public OrdersEntity getOrderId() {
         return orderId;
     }
@@ -61,6 +99,22 @@ public class OrderItemEntity implements Serializable {
 
     public void setItemId(ItemEntity itemId) {
         this.itemId = itemId;
+=======
+    public ItemEntity getItem() {
+        return item;
+    }
+
+    public void setItem(ItemEntity item) {
+        this.item = item;
+    }
+
+    public OrdersEntity getOrders() {
+        return orders;
+    }
+
+    public void setOrders(OrdersEntity orders) {
+        this.orders = orders;
+>>>>>>> initial
     }
 
     public Integer getQuantity() {
@@ -78,6 +132,7 @@ public class OrderItemEntity implements Serializable {
     public void setPrice(Integer price) {
         this.price = price;
     }
+<<<<<<< HEAD
 
     @Override
     public String toString() {
@@ -89,4 +144,6 @@ public class OrderItemEntity implements Serializable {
                 ", price=" + price +
                 '}';
     }
+=======
+>>>>>>> initial
 }
