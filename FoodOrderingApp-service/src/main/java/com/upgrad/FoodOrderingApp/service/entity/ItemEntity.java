@@ -47,6 +47,12 @@ public class ItemEntity implements Serializable {
         return categories;
     }
 
+    @ManyToMany
+    @JoinTable(name = "restaurant_item", joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "restaurant_id"))
+    private List<RestaurantEntity> restaurants = new ArrayList<>();
+
+
     public void setCategories(List<CategoryEntity> categories) {
         this.categories = categories;
     }
