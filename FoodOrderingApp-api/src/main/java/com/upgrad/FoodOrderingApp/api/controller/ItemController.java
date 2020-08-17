@@ -30,6 +30,8 @@ public class ItemController {
 
         //toggle with model used in <> - already used -  ItemList, ItemListResponse ,ItemQuantityResponse
         List<ItemListResponse> responseTopFiveItems = new ArrayList<>();
+        ItemList itemlist = new ItemList();
+
 
         for (ItemEntity n : allTopFiveItems) {
             // toggle with model instantiated - already used  - ItemListResponse,ItemQuantityResponse already used
