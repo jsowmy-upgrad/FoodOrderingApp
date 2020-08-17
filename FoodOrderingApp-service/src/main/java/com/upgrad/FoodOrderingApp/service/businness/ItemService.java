@@ -16,7 +16,7 @@ public class ItemService {
     private ItemDAO itemDAO;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<ItemEntity> getTopFiveItems(String restaurantId) throws RestaurantNotFoundException {
+    public List<ItemEntity> getMostOrderedItems(String restaurantId) throws RestaurantNotFoundException {
 
         List<ItemEntity> itemList = itemDAO.getItemsByRestaurant(restaurantId);
         if (itemList == null) {
