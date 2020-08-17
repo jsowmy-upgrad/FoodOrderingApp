@@ -13,7 +13,6 @@ import java.io.Serializable;
         @NamedQuery(name = "getItemsByCategory",query = "SELECT cie FROM CategoryItemEntity cie WHERE cie.categoryId = :categoryId ORDER BY LOWER(cie.itemId.itemName) ASC")
 })
 public class CategoryItemEntity implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

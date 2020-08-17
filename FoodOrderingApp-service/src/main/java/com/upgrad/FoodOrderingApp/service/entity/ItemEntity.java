@@ -43,7 +43,6 @@ public class ItemEntity implements Serializable {
     @JoinTable(name = "category_item", joinColumns = @JoinColumn(name = "item_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<CategoryEntity> categories = new ArrayList<>();
-
     public List<CategoryEntity> getCategories() {
         return categories;
     }
