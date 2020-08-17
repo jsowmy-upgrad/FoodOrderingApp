@@ -22,7 +22,7 @@ public class ItemController {
     @Autowired
     private ItemEntity ItemEntity;
 
-    // Method To Get Top 5 Items by Popularity Based on the number of times that item was ordered
+    // Method To Get Top 5 Items by Popularity Based on the number of times that item was Ordered
     @RequestMapping(method = RequestMethod.GET, path = "/item/restaurant/{restaurant_id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<ItemListResponse>> getTopFiveItemForRestaurent(@PathVariable("restaurant_id") final String restaurantId ) throws RestaurantNotFoundException{
         int itemListCount = 0;
