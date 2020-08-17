@@ -1,5 +1,4 @@
 package com.upgrad.FoodOrderingApp.service.entity;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
