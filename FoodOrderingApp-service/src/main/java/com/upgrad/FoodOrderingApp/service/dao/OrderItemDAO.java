@@ -16,7 +16,7 @@ public class OrderItemDao {
     private EntityManager entityManager;
 
 
-    //method to fetch items tied to an order 
+    //method to fetch items tied to an order
     public List<OrderItemEntity> getItemsByOrder(OrdersEntity ordersEntity) {
         try {
             return entityManager.createNamedQuery("itemsByOrder", OrderItemEntity.class).setParameter("orderId", ordersEntity.getId().toString()).getResultList();
