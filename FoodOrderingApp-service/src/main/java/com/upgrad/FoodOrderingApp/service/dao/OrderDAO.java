@@ -27,4 +27,33 @@ public class OrderDAO {
             return null;
         }
     }
+
+    /**
+     * @param customerEntity
+     * @return
+     */
+    public List<OrdersEntity> getOrdersByCustomers(CustomerEntity customerEntity) {
+        List<OrdersEntity> ordersEntityList;
+        try {
+            ordersEntityList = entityManager.createNamedQuery("getOrdersByCustomers", OrdersEntity.class)
+                    .setParameter("customer", customerEntity)
+                    .getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+        return ordersEntityList;
+    }
+
+    /* Method to fetch Orders based on restaurant object */
+    /**
+     * @param restaurantEntity
+     * @return
+     */
+    public List<OrderEntity> getOrdersByRestaurant(RestaurantEntity restaurantEntity) {
+        try {
+            return entityManager.createNamedQuery("ordersByRestaurant", OrdersEntity.class).setParameter("restaurant", restaurant).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }
