@@ -1,7 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.ItemDAO;
-import com.upgrad.FoodOrderingApp.service.entity.ItemEntity;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import com.upgrad.FoodOrderingApp.service.exception.RestaurantNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +22,12 @@ public class ItemService {
         if (itemList == null) {
             throw new RestaurantNotFoundException("RNF-001", "No restaurant by this id");
         }
-        return itemList;
-    }
+        /*Methods to retrieve popular items based on the restaurant*/
+            List<ItemEntity> itemEntityList = new ArrayList<>();
+            for (OrdersEntity ordersEntity : orderDao.getOrdersByRestaurant(restaurantId)) {
+                for (OrderItemEntity orderItemEntity : orderItemDao.getItemsByOrder(ordersEntity)) {
+                    itemEntityList.add(orderItemEntity.getItem());
+                }
+            }
+        return itemEntityList;
 }
